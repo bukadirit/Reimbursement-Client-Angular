@@ -1,0 +1,27 @@
+<table style="margin: auto; padding: 10px; text-align: left; width: 90%;">
+    <tr>
+        <td>Ticket ID</td>
+        <td>Amount</td>
+        <td>Description</td>
+        <td>Receipt</td>
+        <td>Resolver</td>
+        <td>Status</td>
+        <td>Submit Time</td>
+        <td>Resolve Time</td>
+        <td>Author Name</td>
+        <td>Author ID</td>
+    </tr>
+    <tr *ngFor = "let ticket of tickets">
+        <td>{{ ticket.id }}</td>
+        <td>{{ ticket.amount }}</td>
+        <td>{{ ticket.description }}</td>
+        <!--td><img [src]="domSanitizer.bypassSecurityTrustUrl(ticket.receipt)"></td-->
+        <td>{{ ticket.resolver }}</td>
+        <td>{{ ticket.status }}</td>
+        <td>{{ ticket.timeSubmitted }}</td>
+        <td>{{ ticket.timeResolved }}</td>
+        <td>{{ ticket.author.firstName }} {{ ticket.author.lastName }}</td>
+        <td>{{ ticket.author.id }}</td>
+    </tr>
+</table>
+<button mat-raised-button color="primary" routerLink="/portal">Back To Portal</button>

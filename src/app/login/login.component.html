@@ -1,0 +1,38 @@
+<form class="example-form" (submit) ="doSubmit()">
+    <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Username</mat-label>
+      <input 
+        matInput 
+        #message 
+        maxlength="50" 
+        placeholder="Enter username"
+        [(ngModel)] = "username" 
+        name="username" 
+        id = "username" 
+        type="text" 
+        required
+      >
+      <mat-hint align="end">{{message.value.length}} / 50</mat-hint>
+    </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input 
+          matInput 
+          #pass 
+          maxlength="50" 
+          placeholder="Enter password"
+          [(ngModel)] = "password" 
+          id = "password" 
+          type="text" 
+          name = "password" 
+          required
+        >
+        <mat-hint align="start">Do Not Share Your Password!</mat-hint>
+        <mat-hint align="end">{{pass.value.length}} / 50</mat-hint>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary">Submit</button>
+  </form>
