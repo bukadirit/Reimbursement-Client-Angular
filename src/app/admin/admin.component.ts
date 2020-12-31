@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Reimbursement } from '../models/reimbursement';
 import { ReimbursementService } from '../services/reimbursement.service';
+
 
 @Component({
   selector: 'app-admin',
@@ -9,7 +10,9 @@ import { ReimbursementService } from '../services/reimbursement.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  tickets: any;
+  displayedColumns: string[] = ['id', 'amount', 'description', 'status', 'type', 'timeSubmitted', 'author', 'timeResolved', 'resolver','buttons'];
+  //dataSource: [];
+  tickets: Reimbursement;
   image: any;
   
   constructor(private service: ReimbursementService){}
@@ -17,7 +20,6 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.service.getAll().subscribe(response =>{
       this.tickets = response;
-      console.log(this.tickets)
     })
   }
 

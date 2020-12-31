@@ -22,7 +22,10 @@ export class ReimbursementService {
   getAll() {
     return this.http.get(this.baseUrl, this.httpOptions);
   }
-
+  
+  getForOne() {
+    return this.http.get(this.baseUrl +'/author/' + localStorage.getItem('id'), this.httpOptions);
+  }
   postReimbursement(r: any, f: any){
     this.form.patchValue({
       reimbursement: JSON.stringify(r),
