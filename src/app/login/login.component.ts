@@ -27,6 +27,7 @@ export class LoginComponent{
           if(this.user){
             setUser(this.user)
             this.user.password= "";
+            this.service.loginStatus.next(true);
     
             this.router.navigate(['/portal']);
           }
