@@ -13,9 +13,6 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   authenticate(u: string, p: string){
-    return this.http.post(this.url, 
-                  {username: u ,password: p}, 
-                  this.httpOptions          
-    )
+    return this.http.post(this.url, {username: u ,password: p}, this.httpOptions);
   }
 }

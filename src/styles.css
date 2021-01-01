@@ -2,3 +2,10 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.purple-snackbar {
+    background-color: #673ab7;
+    color: white;
+}
+.mat-snack-bar-container.purple-snackbar {
+    margin-top: 25%;
+}

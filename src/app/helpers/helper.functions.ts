@@ -19,3 +19,32 @@ export const setUser = (user: User) =>{
       localStorage.setItem("firstName", user.firstName.toString());
       localStorage.setItem("lastName", user.lastName.toString());
 }
+
+export const validateLogin = (username: string, password:string) =>{
+    if(username != undefined && password != undefined){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+export const getErrors = (error: Response) =>{
+    if(error.status){
+        switch (error.status) {
+            case 400:
+            case 403:
+                return 'The Username or Password is Incorrect';
+            case 401:      
+                return 'You Are Not Authorized To Access This Resource';
+            case 404:    
+                return 'The Resource or Page Was Not Found';
+            case 500:     
+                return 'A Server Error Has Occurred. Please Try Again Later.';
+            default:
+                return 'An Unexpected Error Has Occurred.'
+          }
+    }
+    else{
+        return 'An Unexpected Error Has Occurred.'
+    }
+}
