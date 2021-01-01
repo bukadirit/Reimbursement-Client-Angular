@@ -10,7 +10,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent{
-  durationInSeconds = 5;
   username: string;
   password: string;
   user :any;
@@ -18,7 +17,6 @@ export class LoginComponent{
   constructor(private service:AuthService, private router: Router, private snackBar: MatSnackBar) { }
 
   doSubmit(){
-    console.log('submit was called')
     if(validateLogin(this.username, this.password)){
         this.service.authenticate(this.username, this.password) 
         .subscribe(response => {

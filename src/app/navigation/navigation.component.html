@@ -9,7 +9,7 @@
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item (click) = "doLogout()">
         <mat-icon>notifications_off</mat-icon>
         <span>Log Out</span>
       </button>

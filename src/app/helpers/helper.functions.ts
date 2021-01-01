@@ -20,6 +20,15 @@ export const setUser = (user: User) =>{
       localStorage.setItem("lastName", user.lastName.toString());
 }
 
+export const removeUser = () =>{
+      localStorage.removeItem("username");
+      localStorage.removeItem("email");
+      localStorage.removeItem("id");
+      localStorage.removeItem("role");
+      localStorage.removeItem("firstName");
+      localStorage.removeItem("lastName");
+}
+
 export const validateLogin = (username: string, password:string) =>{
     if(username != undefined && password != undefined){
         return true;

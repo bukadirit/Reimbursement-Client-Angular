@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
   public loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus());
-  private url ='http://localhost:8080/ers/auth/login';
+  private url ='http://localhost:8080/ers/auth/';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     withCredentials: true
@@ -15,7 +15,11 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   authenticate(u: string, p: string){
-    return this.http.post(this.url, {username: u ,password: p}, this.httpOptions);
+    return this.http.post(this.url + "login", {username: u ,password: p}, this.httpOptions);
+  }
+
+  logout(){
+    return this.http.post(this.url + "logout", null, this.httpOptions);
   }
 
   checkLoginStatus() : boolean {

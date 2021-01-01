@@ -12,6 +12,13 @@
 
 .submit-button{
     width:100%;
-    margin-top: 6%;
+    margin-top: 2%;
     margin-bottom: auto;
+}
+
+#form-title{
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #673ab7;
 }
