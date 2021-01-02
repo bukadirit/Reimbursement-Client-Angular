@@ -1,0 +1,9 @@
+.cover{
+  object-fit: fill;
+  width: 100%;
+  height:45vh;
+}
+
+.text-color{
+    color: #673ab7;
+}

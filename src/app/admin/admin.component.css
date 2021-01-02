@@ -5,3 +5,9 @@ table {
   .content-color{
     color: #673ab7;
   }
+
+  td , th {
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 200px;
+}

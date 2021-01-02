@@ -14,6 +14,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +32,7 @@ import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ImageDialogComponent } from './image-dialog/image-dialog.component';
 
 
 
@@ -44,6 +46,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     NavigationComponent,
     PortalComponent,
     ProfileComponent,
+    ImageDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,11 +68,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [
     AuthService,
     ReimbursementService,
     FormBuilder
+  ],
+  entryComponents: [
+    ImageDialogComponent
   ],
   bootstrap: [AppComponent]
 })
