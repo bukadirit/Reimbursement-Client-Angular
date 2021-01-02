@@ -51,8 +51,8 @@
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let element">
         <td *ngIf = "element.status == 'Pending'">
-          <button mat-raised-button color="accent">Approve</button>
-          <button mat-raised-button color="warn">Deny</button>
+          <button mat-raised-button color="accent" (click)="approveReimb(element)">Approve</button>
+          <button mat-raised-button color="warn" (click)="denyReimb(element)">Deny</button>
         </td>
       </mat-cell>
     </ng-container>
