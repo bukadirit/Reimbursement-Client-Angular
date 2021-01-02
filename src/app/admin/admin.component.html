@@ -1,67 +1,73 @@
-<table mat-table [dataSource]="tickets" class="mat-elevation-z8">
+<mat-table [dataSource]="tickets" class="mat-elevation-z8">
+  
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> Ticket ID </th>
-      <td mat-cell *matCellDef="let element" class="content-color"> {{element.id}} </td>
+      <mat-header-cell *matHeaderCellDef> Ticket ID </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="content-color"> {{element.id}} </mat-cell>
     </ng-container>
-    
+  
     <ng-container matColumnDef="amount">
-      <th mat-header-cell *matHeaderCellDef> Amount </th>
-      <td mat-cell *matCellDef="let element" class="content-color"> {{element.amount}} </td>
+      <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="content-color"> {{element.amount | currency}} </mat-cell>
     </ng-container>
-    
-    <ng-container matColumnDef="description"> 
-      <th mat-header-cell *matHeaderCellDef> Description </th>
-      <td mat-cell *matCellDef="let element" class="content-color"> {{element.description}} </td>
+  
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="content-color"> {{element.description}} </mat-cell>
     </ng-container>
-    
+  
     <ng-container matColumnDef="receipt">
-      <th mat-header-cell *matHeaderCellDef> Receipt </th>
-      <td mat-cell *matCellDef="let element">
+      <mat-header-cell *matHeaderCellDef> Receipt </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="content-color">
         <button mat-raised-button color="primary" (click)="openDialog(element.receipt)">View Receipt</button>
-      </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef> Status </th>
-      <td mat-cell *matCellDef="let element" class="content-color"> {{element.status}} </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef> Type </th>
-      <td mat-cell *matCellDef="let element" class="content-color"> {{element.type}} </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="timeSubmitted">
-      <th mat-header-cell *matHeaderCellDef> Submit Time </th>
-      <td mat-cell *matCellDef="let element" class="content-color"> {{element.timeSubmitted | date: 'medium'}} </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="author">
-      <th mat-header-cell *matHeaderCellDef> Employee </th>
-      <td mat-cell *matCellDef="let element" class="content-color"> {{element.author.firstName}} {{ element.author.lastName}} </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="timeResolved">
-      <th mat-header-cell *matHeaderCellDef> Resolve Time </th>
-      <td mat-cell *matCellDef="let element" class="content-color"> {{element.timeResolved | date: 'medium'}} </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="resolver">
-      <th mat-header-cell *matHeaderCellDef> Resolver </th>
-      <td mat-cell *matCellDef="let element" class="content-color"> {{element.resolved}} </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="buttons">
-      <th mat-header-cell *matHeaderCellDef></th>
-        <mat-cell *matCellDef="let element">
-          <td *ngIf = "element.status == 'Pending'">
-            <button mat-raised-button color="accent">Approve</button>
-            <button mat-raised-button color="warn">Deny</button>
-          </td>
-        </mat-cell>
+      </mat-cell>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="content-color"> {{element.status}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="content-color"> {{element.type}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="timeSubmitted">
+      <mat-header-cell *matHeaderCellDef> Submit Time </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="content-color"> {{element.timeSubmitted | date: 'medium'}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="author">
+      <mat-header-cell *matHeaderCellDef> Author </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="content-color"> {{element.author.firstName}} {{element.author.lastName}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="timeResolved">
+      <mat-header-cell *matHeaderCellDef> Resolve Time </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="content-color"> {{element.timeResolved | date: 'medium'}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="buttons">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <td *ngIf = "element.status == 'Pending'">
+          <button mat-raised-button color="accent">Approve</button>
+          <button mat-raised-button color="warn">Deny</button>
+        </td>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="resolver">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element" class="content-color">
+        <td *ngIf = "element.resolver != null">
+         {{element.resolver.firstName}} {{element.resolver.lastName}}
+        </td>
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
   <button mat-raised-button color="primary" routerLink="/portal">Back To Portal</button>

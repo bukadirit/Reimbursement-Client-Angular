@@ -11,5 +11,5 @@ export class Reimbursement{
                 public status?: string,
                 public type?: string,
                 public author?: User,
-                public resolver?: null){};
+                public resolver?: User){};
 }

@@ -14,13 +14,14 @@ import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
 export class AdminComponent implements OnInit {
   displayedColumns: string[] = ['id', 'amount', 'description', 'receipt', 'status', 'type', 'timeSubmitted', 'author', 'timeResolved', 'resolver','buttons'];
   tickets: Reimbursement;
-  image: any;
   
   constructor(private service: ReimbursementService, public dialog: MatDialog){}
 
   ngOnInit(): void {
     this.service.getAll().subscribe(response =>{
+      this.tickets = new Reimbursement;
       this.tickets = response;
+      //console.log(this.tickets.resolver.firstName)
     })
   }
 
