@@ -26,13 +26,16 @@ import { LoginComponent } from './login/login.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { PortalComponent } from './portal/portal.component';
 import { ProfileComponent } from './profile/profile.component';
-import { FormBuilder, FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule} from '@angular/forms';
 import { ReimbursementService } from './services/reimbursement.service';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ImageDialogComponent } from './image-dialog/image-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFileUploadModule } from 'mat-file-upload';
 
 
 
@@ -68,12 +71,16 @@ import { ImageDialogComponent } from './image-dialog/image-dialog.component';
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatFileUploadModule
   ],
   providers: [
     AuthService,
     ReimbursementService,
     FormBuilder
+    
   ],
   entryComponents: [
     ImageDialogComponent

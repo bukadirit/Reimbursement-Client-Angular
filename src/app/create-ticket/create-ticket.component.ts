@@ -11,22 +11,39 @@ import { ReimbursementService } from '../services/reimbursement.service';
 })
 export class CreateTicketComponent implements OnInit {
   private newImage: any;
-  private reimb = new Reimbursement();
   private user: User = new User();
+  public reimb = new Reimbursement();
+  public selectedType: any;
+  public types = [
+    { value: 0, viewValue: 'Lodging' },
+    { value: 1, viewValue: 'Travel' },
+    { value: 2, viewValue: 'Food' },
+    { value: 3, viewValue: 'Other' },
+  ];
   
-  constructor(private service: ReimbursementService){this.user = getUser();};
+  constructor(
+    private service: ReimbursementService)
+    {
+      this.user = getUser();
+    };
 
-  onUpload(event: any){
-    this.newImage = event.target.files[0];
+  onSubmit(){
     this.reimb.id = 0;
-    this.reimb.amount= 999;
-    this.reimb.description= "Who decided that?"
-    this.reimb.status = "Pending";
-    this.reimb.type = "Other";
+    this.reimb.status = "Pending"; 
+    this.reimb.type = this.selectedType;
     this.reimb.author = this.user;
-
+  
     this.service.postReimbursement(this.reimb, this.newImage).subscribe();
   }
+
+  onSelectedFilesChanged(event: any){
+    if(event){
+      this.newImage = event[0];
+    }
+  }
+
+  onUploadClicked(event: any){}
+
   ngOnInit(): void {
   }
 
