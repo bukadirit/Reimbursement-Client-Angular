@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
   public loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus());
+  public adminStatus = new BehaviorSubject<boolean>(this.checkIsAdmin());
   private url ='http://localhost:8080/ers/auth/';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -23,10 +24,23 @@ export class AuthService {
   }
 
   checkLoginStatus() : boolean {
-    if(localStorage.getItem('id') === null || localStorage.getItem('if') === undefined){
+    if(localStorage.getItem('id') === null || localStorage.getItem('id') === undefined){
       return false;
     }
     return true;
+  }
+
+  checkIsAdmin() : boolean{
+    if(localStorage.getItem('role') != 'Admin'){
+      console.log(localStorage.getItem('role'))
+      return false;
+    }
+    console.log(localStorage.getItem('role'))
+    return true;
+  }
+
+  get isAdmin(){
+    return this.adminStatus.asObservable();
   }
 
   get isLoggesIn() {

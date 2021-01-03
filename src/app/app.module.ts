@@ -1,3 +1,5 @@
+import { AdminAuthGuard as AdminAuthGuard } from './services/admin-auth-guard.service';
+import { AuthGuard as AuthGuard } from './services/auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -15,6 +17,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -79,8 +82,9 @@ import { MatFileUploadModule } from 'mat-file-upload';
   providers: [
     AuthService,
     ReimbursementService,
-    FormBuilder
-    
+    FormBuilder,
+    AuthGuard,
+    AdminAuthGuard
   ],
   entryComponents: [
     ImageDialogComponent

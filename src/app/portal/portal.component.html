@@ -1,7 +1,7 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
   <mat-grid-list cols="2" rowHeight="350px" id = "grid-bg">
-    <mat-grid-tile colspan="1" rowspan="1" routerLink="/profile">
+    <mat-grid-tile colspan="1" rowspan="1" routerLink="/profile" class = "no-border">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title class="dashboard-card-title">
@@ -13,7 +13,7 @@
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile colspan="1" rowspan="1" routerLink="/create-ticket">
+    <mat-grid-tile colspan="1" rowspan="1" routerLink="/create-ticket" class = "no-border">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title class="dashboard-card-title">
@@ -25,7 +25,7 @@
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile colspan="1" rowspan="1" routerLink="/view-ticket">
+    <mat-grid-tile colspan="1" rowspan="1" routerLink="/view-ticket" class = "no-border">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title class="dashboard-card-title">
@@ -37,7 +37,7 @@
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile colspan="1" rowspan="1" routerLink="/admin" *ngIf= "user.role == 'Admin'">
+    <mat-grid-tile colspan="1" rowspan="1" routerLink="/admin" *ngIf= "user.role == 'Admin'" class = "no-border">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title class="dashboard-card-title">

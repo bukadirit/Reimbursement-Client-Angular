@@ -1,3 +1,5 @@
+import { AdminAuthGuard as AdminAuthGuard } from './services/admin-auth-guard.service';
+import { AuthGuard } from './services/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
@@ -10,19 +12,23 @@ import { ViewTicketComponent } from './view-ticket/view-ticket.component';
 const routes: Routes = [
   {
     path: 'portal',
-    component: PortalComponent
+    component: PortalComponent,
+    canActivate: [AuthGuard]
   }, 
   {
     path: 'view-ticket',
-    component: ViewTicketComponent
+    component: ViewTicketComponent,
+    canActivate: [AuthGuard]
   }, 
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'create-ticket',
-    component: CreateTicketComponent
+    component: CreateTicketComponent,
+    canActivate: [AuthGuard]
   }, 
   {
     path: 'login',
@@ -30,7 +36,8 @@ const routes: Routes = [
   }, 
   {
     path: 'admin',
-    component: AdminComponent
+    component: AdminComponent,
+    canActivate: [AuthGuard, AdminAuthGuard]
   }, 
   {
     path: '**',
