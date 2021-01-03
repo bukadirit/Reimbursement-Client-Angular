@@ -18,7 +18,22 @@
   <ng-container matColumnDef="receipt">
     <mat-header-cell *matHeaderCellDef> Receipt </mat-header-cell>
     <mat-cell *matCellDef="let element" class="content-color">
-      <button mat-raised-button color="primary" (click)="openDialog(element.receipt)">View Receipt</button>
+      <button *ngIf= "element.receipt; else showUpload" mat-raised-button color="primary" (click)="openDialog(element.receipt)">View Receipt</button>
+      <ng-template #showUpload>
+        <mat-file-upload
+            [labelText]="''"
+            [selectButtonText]="'Attach A Receipt'"
+            [selectFilesButtonType]="button"
+            [uploadButtonText]="'Submit'"
+            [uploadButtonType]="submit"
+            [allowMultipleFiles]="false"
+            [showUploadButton]="true"
+            [acceptedTypes]="'.png, .jpg, .jpeg'"
+            (uploadClicked)="onUploadClicked(element.id)"
+            (selectedFilesChanged)="onSelectedFilesChanged($event)"
+            >
+        </mat-file-upload>
+      </ng-template>
     </mat-cell>
   </ng-container>
 

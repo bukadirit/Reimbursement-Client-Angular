@@ -85,7 +85,7 @@ export class CreateTicketComponent{
   openDialog() {
     const ref = this.dialog.open(ImageDialogComponent, {
       width: '40vw',
-      height: '20vh'
+      height: '25vh'
     });
 
     ref.afterClosed().subscribe(result => {

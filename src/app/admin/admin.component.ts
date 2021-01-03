@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit {
         name: image
       },
       width: '50vw',
-      height: '60vh'
+      height: '65%'
     });
   }
 

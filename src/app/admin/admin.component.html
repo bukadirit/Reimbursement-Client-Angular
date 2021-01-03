@@ -16,9 +16,10 @@
     </ng-container>
   
     <ng-container matColumnDef="receipt">
-      <mat-header-cell *matHeaderCellDef> Receipt </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Receipt </mat-header-cell> 
       <mat-cell *matCellDef="let element" class="content-color">
-        <button mat-raised-button color="primary" (click)="openDialog(element.receipt)">View Receipt</button>
+        <button mat-raised-button color="primary" *ngIf= "element.receipt; else showEmpty" (click)="openDialog(element.receipt)">View Receipt</button>
+        <ng-template #showEmpty><strong> No Receipt</strong></ng-template>
       </mat-cell>
     </ng-container>
 

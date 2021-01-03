@@ -42,12 +42,12 @@ postReimbursementWithNoReceipt(reimb: Reimbursement){
   return this.http.post(this.baseUrl, reimb, {withCredentials: true}); 
 }
 
-postReimbursementImage(image: any){
+postReimbursementImage(image: any, id: number){
   let formData = new FormData();
   formData.append("image", image);
 
   return this.http.post(
-    this.baseUrl + localStorage.getItem('id' + '/receipt') , 
+    this.baseUrl + `${id}/receipt` , 
     formData, 
     {withCredentials: true}); 
 }
