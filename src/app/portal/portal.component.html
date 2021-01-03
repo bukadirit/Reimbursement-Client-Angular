@@ -37,7 +37,7 @@
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile colspan="1" rowspan="1" routerLink="/admin">
+    <mat-grid-tile colspan="1" rowspan="1" routerLink="/admin" *ngIf= "user.role == 'Admin'">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title class="dashboard-card-title">

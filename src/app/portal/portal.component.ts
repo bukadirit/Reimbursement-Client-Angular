@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { getUser } from './../helpers/helper.functions';
+import { User } from './../models/user';
+import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
@@ -7,8 +9,8 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
   templateUrl: './portal.component.html',
   styleUrls: ['./portal.component.css']
 })
-export class PortalComponent {
-  /** Based on the screen size, switch from standard to one column per row */
+export class PortalComponent implements OnInit{
+  public user: User;
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
       if (matches) {
@@ -30,4 +32,8 @@ export class PortalComponent {
   );
 
   constructor(private breakpointObserver: BreakpointObserver) {}
+  
+  ngOnInit(): void {
+    this.user = getUser();
+  }
 }

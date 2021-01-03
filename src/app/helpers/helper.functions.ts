@@ -2,32 +2,34 @@ import { Reimbursement } from './../models/reimbursement';
 import { User } from "../models/user";
 
 export const getUser = () =>{
-    let user: {};
-    return user = {
-        id: parseInt(localStorage.getItem('id')),
-        username: localStorage.getItem('username'),
-        firstName: localStorage.getItem('firstName'),
-        lastName: localStorage.getItem('lastName'),
-        email: localStorage.getItem('email')
-    }
+    let user: User = new User(
+        localStorage.getItem("email"),
+        localStorage.getItem("firstName"),
+        parseInt(localStorage.getItem("id")),
+        localStorage.getItem("lastName"),
+        null,
+        localStorage.getItem("role"),
+        localStorage.getItem("username")
+    );
+    return user;
 }
 
 export const setUser = (user: User) =>{
-    localStorage.setItem("username", user.username.toString());
-      localStorage.setItem("email", user.email.toString());
-      localStorage.setItem("id", user.id.toString());
-      localStorage.setItem("role", user.role.toString());
-      localStorage.setItem("firstName", user.firstName.toString());
-      localStorage.setItem("lastName", user.lastName.toString());
+    localStorage.setItem("username", user.username);
+    localStorage.setItem("email", user.email);
+    localStorage.setItem("id", user.id.toString());
+    localStorage.setItem("role", user.role);
+    localStorage.setItem("firstName", user.firstName);
+    localStorage.setItem("lastName", user.lastName);
 }
 
 export const removeUser = () =>{
-      localStorage.removeItem("username");
-      localStorage.removeItem("email");
-      localStorage.removeItem("id");
-      localStorage.removeItem("role");
-      localStorage.removeItem("firstName");
-      localStorage.removeItem("lastName");
+    localStorage.removeItem("username");
+    localStorage.removeItem("email");
+    localStorage.removeItem("id");
+    localStorage.removeItem("role");
+    localStorage.removeItem("firstName");
+    localStorage.removeItem("lastName");
 }
 
 export const validateLogin = (username: string, password:string) =>{
