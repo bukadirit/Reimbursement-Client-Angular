@@ -7,3 +7,11 @@
 .text-color{
     color: #673ab7;
 }
+
+#dialog-submit{
+  margin-left: 70%;
+}
+
+.dialog-actions{
+  margin-top:2%
+}

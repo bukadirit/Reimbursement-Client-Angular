@@ -1,3 +1,4 @@
+import { Reimbursement } from './../models/reimbursement';
 import { User } from "../models/user";
 
 export const getUser = () =>{
@@ -41,6 +42,7 @@ export const getErrors = (error: Response) =>{
     if(error.status){
         switch (error.status) {
             case 400:
+                return 'The Request You Sent Is Invalid. Please Fill out All Required Fields'
             case 403:
                 return 'The Username or Password is Incorrect';
             case 401:      
@@ -56,4 +58,11 @@ export const getErrors = (error: Response) =>{
     else{
         return 'An Unexpected Error Has Occurred.'
     }
+}
+
+export const validateReimbForm = (reimb: Reimbursement) =>{
+    if(!reimb.amount || !reimb.description || !reimb.type)
+        return false;
+        
+    return true;
 }

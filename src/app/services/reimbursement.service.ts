@@ -38,15 +38,28 @@ export class ReimbursementService {
 //     formData.append("image", this.form.get('image').value);
 //     return this.http.post(this.baseUrl, formData, this.httpOptions);
 //   }
+postReimbursementWithNoReceipt(reimb: Reimbursement){
+  return this.http.post(this.baseUrl, reimb, {withCredentials: true}); 
+}
 
-postReimbursement(r: Reimbursement, f: any){
-    const data = new Blob([JSON.stringify(r)], {
+postReimbursementImage(image: any){
+  let formData = new FormData();
+  formData.append("image", image);
+
+  return this.http.post(
+    this.baseUrl + localStorage.getItem('id' + '/receipt') , 
+    formData, 
+    {withCredentials: true}); 
+}
+
+postReimbursement(reimb: Reimbursement, image: any){
+    const data = new Blob([JSON.stringify(reimb)], {
       type: 'application/json',
     });
 
     let formData = new FormData();
     formData.append("reimbursement", data);
-    formData.append("image", f);
+    formData.append("image", image);
     return this.http.post(this.baseUrl, formData, {withCredentials: true});
   }
 

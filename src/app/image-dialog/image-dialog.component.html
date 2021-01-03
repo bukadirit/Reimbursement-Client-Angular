@@ -1,7 +1,21 @@
-<h1 mat-dialog-title class ="text-color">Reciept</h1>
+<ng-tempplate *ngIf= "data != null; else confirmDiv">
+  <h1 mat-dialog-title class ="text-color">Reciept</h1>
 <div mat-dialog-content>
     <img src="data:image/png;base64,{{data.name}}" class = "cover"/>
 </div>
 <div mat-dialog-actions>
   <button mat-dialog-close mat-raised-button color="primary">Close</button>
 </div>
+</ng-tempplate>
+
+
+<ng-template #confirmDiv>
+  <h1 mat-dialog-title class ="text-color mat-typography">No Receipt Has Been Added</h1>
+  <div mat-dialog-content class ="text-color">
+    You have not attached a receipt to this request. Are you sure you want to continue with this submission?
+  </div>
+  <mat-dialog-actions class ="dialog-actions">
+    <button mat-dialog-close mat-raised-button color="primary">Cancel</button>
+    <button mat-dialog-close mat-raised-button color="primary" id="dialog-submit" [mat-dialog-close]="true">Submit</button>
+  </mat-dialog-actions>
+</ng-template>

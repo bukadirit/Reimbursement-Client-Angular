@@ -35,9 +35,9 @@
             [selectFilesButtonType]="button"
             [uploadButtonText]="'Submit'"
             [uploadButtonType]="submit"
+            [allowMultipleFiles]="false"
             [showUploadButton]="false"
-            [acceptedTypes]="'.png'"
-            (uploadClicked)="onUploadClicked($event)"
+            [acceptedTypes]="'.png, .jpg, .jpeg'"
             (selectedFilesChanged)="onSelectedFilesChanged($event)"
             >
         </mat-file-upload>
