@@ -63,7 +63,7 @@ export const getErrors = (error: Response) =>{
 }
 
 export const validateReimbForm = (reimb: Reimbursement) =>{
-    if(!reimb.amount || !reimb.description || !reimb.type)
+    if(!reimb.amount || !reimb.description || (reimb.type == undefined|| reimb.type == null))
         return false;
         
     return true;

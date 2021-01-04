@@ -27,8 +27,8 @@ export class ViewTicketComponent implements OnInit {
 
     ngOnInit(): void {
       this.service.getForOne().subscribe(response => {
-        this.dataSource = new MatTableDataSource<Reimbursement>(response);
-        this.dataSource.paginator = this.paginator;
+      this.dataSource = new MatTableDataSource<Reimbursement>(response);
+      this.dataSource.paginator = this.paginator;
       })
     }
 
