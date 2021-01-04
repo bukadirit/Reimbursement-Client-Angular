@@ -1,7 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { Reimbursement } from '../models/reimbursement';
 import { ReimbursementService } from '../services/reimbursement.service';
-import {MatDialog} from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
 import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
 
 @Component({
@@ -11,14 +13,23 @@ import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
 })
 export class AdminComponent implements OnInit {
   displayedColumns: string[] = ['id', 'amount', 'description', 'receipt', 'status', 'type', 'timeSubmitted', 'author', 'timeResolved', 'resolver','buttons'];
-  tickets: Reimbursement;
+  public dataSource = new MatTableDataSource<Reimbursement>(); 
   
   constructor(
     private service: ReimbursementService, 
     public dialog: MatDialog){}
 
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+
   ngOnInit(): void {
-    this.service.getAll().subscribe(response => this.tickets = response)
+    this.service.getAll().subscribe(response => {
+      this.dataSource = new MatTableDataSource<Reimbursement>(response);
+      this.dataSource.paginator = this.paginator;
+    })
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   openDialog(image: string) {
@@ -44,7 +55,10 @@ export class AdminComponent implements OnInit {
 
   refresh(){
     this.service.getAll()
-    .subscribe(response => this.tickets = response)
+    .subscribe(response => {
+      this.dataSource = new MatTableDataSource<Reimbursement>(response)
+      this.dataSource.paginator = this.paginator;
+    })
   }
 
   denyReimb(reimb: Reimbursement){

@@ -1,5 +1,7 @@
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Reimbursement } from './../models/reimbursement';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
 import { ReimbursementService } from '../services/reimbursement.service';
@@ -13,19 +15,26 @@ import { getErrors } from '../helpers/helper.functions';
 })
 export class ViewTicketComponent implements OnInit {
   displayedColumns: string[] = ['id', 'amount', 'description', 'receipt', 'status', 'type', 'timeSubmitted', 'timeResolved', 'resolver'];
-  tickets: Reimbursement;
+  public dataSource = new MatTableDataSource<Reimbursement>(); 
   private newImage: any;
   
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(
     private service: ReimbursementService,  
     public dialog: MatDialog,
     private snackBar: MatSnackBar,){}
 
-  ngOnInit(): void {
-    this.service.getForOne().subscribe(response =>{
-      this.tickets = response;
-    })
-  }
+    ngOnInit(): void {
+      this.service.getForOne().subscribe(response => {
+        this.dataSource = new MatTableDataSource<Reimbursement>(response);
+        this.dataSource.paginator = this.paginator;
+      })
+    }
+
+    ngAfterViewInit() {
+      this.dataSource.paginator = this.paginator;
+    }
 
   openDialog(image: string) {
     this.dialog.open(ImageDialogComponent, {
@@ -68,7 +77,8 @@ export class ViewTicketComponent implements OnInit {
 
   refresh(){
     this.service.getForOne().subscribe(response =>{
-      this.tickets = response;
+      this.dataSource = new MatTableDataSource<Reimbursement>(response);
+      this.dataSource.paginator = this.paginator;
     },
     (error: Response )=>{
       const errMsg = getErrors(error);

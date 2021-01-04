@@ -52,7 +52,7 @@ import { MatFileUploadModule } from 'mat-file-upload';
     NavigationComponent,
     PortalComponent,
     ProfileComponent,
-    ImageDialogComponent,
+    ImageDialogComponent
   ],
   imports: [
     BrowserModule,

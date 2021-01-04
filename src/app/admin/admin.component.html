@@ -1,4 +1,4 @@
-<mat-table [dataSource]="tickets" class="mat-elevation-z8">
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> Ticket ID </mat-header-cell>
@@ -72,5 +72,6 @@
     
   </mat-table>
 
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 
   <button mat-raised-button color="primary" routerLink="/portal">Back To Portal</button>
