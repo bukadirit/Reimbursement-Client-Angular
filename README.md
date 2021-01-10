@@ -1,27 +1,36 @@
 # ReimbursementApp
+This is an angular client made to consume the Reimbursement Rest API that was written with Spring Boot. The goal was to provide a client-side application that will allow employees to post and view their submitted reimbursements, as well as, the ability to allow managers to approve or deny said reimbursements.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+# Features implemented
+- Authentication
+- Ability for users to post reimbursement requests; with or without a receipt.
+- Ability for users to attach a receipt to a reimbursement after it has been submitted.
+- Ability for an admin(Manager), to approve or deny a given request.
+- Route guarding
+- Angular Material for a brilliant look and feel.
 
-## Development server
+# Components
+## Admin: Gives the ability to allow Managers to approve/deny posted reimbursements.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Create-Ticket: This is the page that is used to create reimbursement requests.
 
-## Code scaffolding
+## Login: Allows users to login and use the service. (Thanks captain obvious.)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Navigation: A simple navigation bar that adapts to whether the user is logged in or not. After log in, there will be a button that allows the user to log out. It also helps to keep the web page from looking plain.
 
-## Build
+## Portal: This is the landing page for users after successful login. Depending on the user's role, it may or may not show the management card.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Profile: This is where the user can go to find their personnal info such as user id, email, etc.
 
-## Running unit tests
+## View-Ticket: The area where users can go to view the reimbursements that they have submitted. It also allows the option for users to attach a receipt to a reimbursement that was submitted without a receipt.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Other:
+- Helpers: This contains some helpful functions such as error handling, form validation, fetching user data, etc.
+- Image-Dialog: This is an Angular Material component primarily used to view images in a modal. It is used by multiple components as a result.
+- Models: Used for models and interfaces utilized throughout the application.
+- Services: Holds all AJAX calls to the back-end as well as the logic for the route guards.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Things For The Future
+- Better error handling for the entire application.
+- Code refactoring: Some of the same exact code is implemented in multiple componets. It would be great to extract them and make them into reusable functions.
+- General code clean up.
