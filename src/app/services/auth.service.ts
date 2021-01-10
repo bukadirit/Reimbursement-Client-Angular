@@ -32,10 +32,8 @@ export class AuthService {
 
   checkIsAdmin() : boolean{
     if(localStorage.getItem('role') != 'Admin'){
-      console.log(localStorage.getItem('role'))
       return false;
     }
-    console.log(localStorage.getItem('role'))
     return true;
   }
 

@@ -1,9 +1,9 @@
-import { Reimbursement, ReimbInterface } from './../models/reimbursement';
+import { Reimbursement } from './../models/reimbursement';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -30,16 +30,6 @@ export class ReimbursementService {
     return this.http.get<Reimbursement[]>(this.baseUrl + 'author/' + localStorage.getItem('id'));
   }
 
-//   postReimbursement(r: any, f: any){
-//     this.form.patchValue({
-//       reimbursement: JSON.stringify(r),
-//       image: f
-//     });
-//     let formData = new FormData();
-//     formData.append("reimbursement", this.form.get('reimbursement').value);
-//     formData.append("image", this.form.get('image').value);
-//     return this.http.post(this.baseUrl, formData, this.httpOptions);
-//   }
 postReimbursementWithNoReceipt(reimb: Reimbursement){
   return this.http.post(this.baseUrl, reimb, {withCredentials: true}); 
 }
